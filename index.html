@@ -6,7 +6,9 @@
 
   <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
 
-  <script type="module">
+  <script type="module" >
+
+    let text = 'text';
 
     import * as behavior from '/pkg/vxr_behavior.js';
     async function init() {
@@ -37,12 +39,28 @@
         el.addEventListener('mouseleave', function () {
           el.setAttribute('color', defaultColor);
         });
+      },
+      tick: function () {
+        behavior.cylinder_tick()
       }
+
     });
 
     let entt = document.getElementById('cylinder-entity');
     entt.setAttribute('on-hover-do-something', '');
 
+  </script>
+  <script type="module">
+    // import * as behavior from '/pkg/vxr_behavior.js';
+
+    // AFRAME.registerComponent('sphere-tick', {
+    //   init: function () {
+    //     behavior.sphere_tick()
+    //   }
+    // })
+
+    // let sphere = document.getElementById('sphere-entity');
+    // sphere.setAttribute('sphere-tick', '');
   </script>
 
 </head>
@@ -50,8 +68,9 @@
 <body>
   <a-scene stats>
     <a-camera>
-      <a-cursor></a-cursor>
+      <a-cursor ></a-cursor>
     </a-camera>
+    <a-sphere id="sphere-entity" position="5 1.25 -5" radius="1.25" color="#EF2D5E"></a-sphere>
     <a-box position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9" on-hover-do-something="color: blue"></a-box>
     <a-sphere position="0 1.25 -5" radius="1.25" color="#EF2D5E"></a-sphere>
     <a-cylinder id="cylinder-entity" position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder>

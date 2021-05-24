@@ -3,6 +3,11 @@
 use log::*;
 use wasm_bindgen::prelude::*;
 
+// #[wasm_bindgen(start)]
+// pub fn run() {
+//   sphere_tick();
+// }
+
 #[wasm_bindgen]
 pub struct Pope {
     internal: i32,
@@ -42,6 +47,13 @@ impl Pope {
 #[wasm_bindgen]
 pub fn behavior_init() {
     wasm_logger::init(wasm_logger::Config::new(log::Level::Info));
+}
+
+#[wasm_bindgen]
+pub fn cylinder_tick() {
+  use web_sys::console;
+
+  console::log_1(&"Hello, I'm a cylinder!".into());
 }
 
 // fn main() {
